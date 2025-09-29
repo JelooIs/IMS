@@ -2,22 +2,22 @@
 
 
 @inject IViewInventoriesByNameUseCase ViewInventoriesByNameUseCase
+@inject IEditInventoryUseCase EditInventoryUseCase
 
 <PageTitle>Test Page</PageTitle>
-
-<br />
-<br />
+<br/>
+<br/>
 
 <ul>
-@if (inventories is not null && inventories.Count > 0)
-{
-	foreach(var inv in inventories)
+	@if (inventories is not null && inventories.Count > 0)
 	{
-		<li>
-			@inv.InventoryName
-		</li>
+		foreach(var inv in inventories)
+		{
+			<li>
+				@inv.InventoryName
+			</li>
+		}
 	}
-}
 </ul>
 
 @code {
@@ -25,6 +25,10 @@
 
 	protected override async Task OnInitializedAsync()
 	{
+		var inventory = new Inventory { InventoryId = 1, InventoryName = "Attiéké", Quantity = 50, Price = 5 };
+
+		await EditInventoryUseCase.ExecuteAsync(inventory);
+
 		inventories = (await ViewInventoriesByNameUseCase.ExecuteAsync()).ToList();
 	}
 }

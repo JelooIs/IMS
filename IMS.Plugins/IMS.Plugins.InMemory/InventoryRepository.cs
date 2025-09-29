@@ -12,9 +12,10 @@ namespace IMS.Plugins.InMemory
             _inventories = new List<Inventory>()
             {
                 new Inventory { InventoryId = 1, InventoryName = "Attiéké", Quantity = 20, Price = 4.90 },
-                new Inventory { InventoryId = 1, InventoryName = "Tomates (1kg)", Quantity = 15, Price = 1.90 },
-                new Inventory { InventoryId = 1, InventoryName = "Poisson Thon (x4)", Quantity = 10, Price = 7 },
-                new Inventory { InventoryId = 1, InventoryName = "Banane Plantain (x6)", Quantity = 8 , Price = 5.90 },
+                new Inventory { InventoryId = 2, InventoryName = "Tomates (1kg)", Quantity = 15, Price = 1.90 },
+                new Inventory { InventoryId = 3, InventoryName = "Poisson Thon (x4)", Quantity = 10, Price = 7 },
+
+                new Inventory { InventoryId = 4, InventoryName = "Banane Plantain (x6)", Quantity = 8 , Price = 5.90 },
 
 
             };    
@@ -33,11 +34,44 @@ namespace IMS.Plugins.InMemory
             return Task.CompletedTask;
         }
 
-        public async Task<IEnumerable<Inventory>> GetInventoriesByNammeAsync(string name)
+        public Task DeleteInventoryByIdAsync(int inventoryId)
+        {
+            var inventory = _inventories.FirstOrDefault(x => x.InventoryId == inventoryId);
+            if (inventory != null)
+            {
+                _inventories.Remove(inventory);
+            }
+
+            return Task.CompletedTask;
+        }
+
+        public async Task<IEnumerable<Inventory>> GetInventoriesByNameAsync(string name)
         {
             if (string.IsNullOrWhiteSpace(name)) return await Task.FromResult(_inventories);
 
             return _inventories.Where(x => x.InventoryName.Contains(name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public async Task<Inventory> GetInventoryByIdAsync(int inventoryId)
+        {
+            return await Task.FromResult(_inventories.First(x => x.InventoryId == inventoryId));
+        }
+
+        public Task UpdateInventoryAsync(Inventory inventory)
+        {
+            if (_inventories.Any(x => x.InventoryId != inventory.InventoryId &&
+                x.InventoryName.Equals(inventory.InventoryName, StringComparison.OrdinalIgnoreCase)))
+                return Task.CompletedTask;
+
+            var invToUpdate = _inventories.FirstOrDefault(x => x.InventoryId == inventory.InventoryId);
+            if (invToUpdate is not null)
+            {
+                invToUpdate.InventoryName = inventory.InventoryName;
+                invToUpdate.Quantity = inventory.Quantity;
+                invToUpdate.Price = inventory.Price;
+            }
+
+            return Task.CompletedTask;
         }
     }
 }

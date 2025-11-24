@@ -1,7 +1,5 @@
 ﻿using IMS.CoreBusiness;
 using IMS.Plugins.InMemory;
-using IMS.UseCases.Inventories.Interfaces;
-using IMS.UseCases.PluginInterfaces;
 using IMS.UseCases.Products.interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,19 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IMS.UseCases.Inventories
+namespace IMS.UseCases.Products
 {
-    public class AddProductUseCase : IAddProductUseCase
+    public class ViewProductByIdUseCase : IViewProductByIdUseCase
     {
         private readonly IProductRepository productRepository;
 
-        public AddProductUseCase(IProductRepository productRepository)
+        public ViewProductByIdUseCase(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
         }
-        public async Task ExecuteAsync(Product product)
+        public async Task<Product> ExecuteAsync(int productId)
         {
-            await this.productRepository.AddProductAsync(product);
+            return await productRepository.GetProductByIdAsync(productId);
         }
 
     }

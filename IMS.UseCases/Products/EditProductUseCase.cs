@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 
 namespace IMS.UseCases.Inventories
 {
-    public class AddProductUseCase : IAddProductUseCase
+    public class EditProductUseCase : IEditProductUseCase
     {
         private readonly IProductRepository productRepository;
 
-        public AddProductUseCase(IProductRepository productRepository)
+        public EditProductUseCase(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
         }
         public async Task ExecuteAsync(Product product)
         {
-            await this.productRepository.AddProductAsync(product);
+            await this.productRepository.UpdateProductAsync(product);
         }
 
     }

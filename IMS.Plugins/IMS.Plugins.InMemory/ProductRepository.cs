@@ -32,6 +32,14 @@ namespace IMS.Plugins.InMemory
             return Task.CompletedTask;
         }
 
+        public async Task<bool> ExistsAsync(Product product)
+        {
+            return await Task.FromResult(
+                _products.Any(x => x.ProductId != product.ProductId &&
+                x.ProductName.Equals(product.ProductName, StringComparison.OrdinalIgnoreCase))
+            );
+        }
+
         public Task DeleteProductByIdAsync(int productId)
         {
             var product = _products.FirstOrDefault(x => x.ProductId == productId);

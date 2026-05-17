@@ -1,4 +1,5 @@
 ﻿using IMS.CoreBusiness;
+using IMS.Plugins.InMemory;
 using IMS.UseCases.Activities.Interfaces;
 using IMS.UseCases.PluginInterfaces;
 using System;

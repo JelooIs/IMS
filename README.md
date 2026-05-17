@@ -1,37 +1,37 @@
 # ?? IMS (Inventory Management System)
 
-Un système de gestion d'inventaires simple et moderne construit avec **Blazor Server** et **.NET 8**.
+Un systÃ¨me de gestion d'inventaires simple et moderne construit avec **Blazor Server** et **.NET 8**.
 
-## ?? À propos du Projet
+## ?? Ã€ propos du Projet
 
 IMS est une application web permettant de :
-- ? Gérer des **produits** (création, édition, suppression, consultation)
-- ? Gérer des **inventaires** (stock, prix, quantités)
+- ? GÃ©rer des **produits** (crÃ©ation, Ã©dition, suppression, consultation)
+- ? GÃ©rer des **inventaires** (stock, prix, quantitÃ©s)
 - ? Associer des inventaires aux produits
-- ? Valider les prix des produits par rapport aux coûts des inventaires
+- ? Valider les prix des produits par rapport aux coÃ»ts des inventaires
 
 ## ??? Architecture
 
-Ce projet suit l'architecture **Clean Architecture** avec une séparation claire des responsabilités :
+Ce projet suit l'architecture **Clean Architecture** avec une sÃ©paration claire des responsabilitÃ©s :
 
 ```
-??? IMS.CoreBusiness/          # Domaine - Entités et validations métier
+??? IMS.CoreBusiness/          # Domaine - EntitÃ©s et validations mÃ©tier
 ?   ??? Product.cs
 ?   ??? Inventory.cs
 ?   ??? ProductInventory.cs
 ?   ??? Validations/
 ?
-??? IMS.UseCases/              # Logique métier - Cas d'usage
+??? IMS.UseCases/              # Logique mÃ©tier - Cas d'usage
 ?   ??? Products/
 ?   ??? Inventories/
 ?   ??? PluginInterfaces/
 ?
-??? IMS.Plugins.InMemory/      # Persistance - Repositories en mémoire
+??? IMS.Plugins.InMemory/      # Persistance - Repositories en mÃ©moire
 ?   ??? ProductRepository.cs
 ?   ??? InventoryRepository.cs
 ?   ??? InventoryTransactionRepository.cs
 ?
-??? IMS.WebApp/                # Présentation - Interface Blazor
+??? IMS.WebApp/                # PrÃ©sentation - Interface Blazor
     ??? Components/
     ??? Pages/
     ?   ??? Products/
@@ -40,11 +40,11 @@ Ce projet suit l'architecture **Clean Architecture** avec une séparation claire 
     ??? Program.cs
 ```
 
-## ?? Démarrage Rapide
+## ?? DÃ©marrage Rapide
 
-### Prérequis
+### PrÃ©requis
 
-- **.NET 8 SDK** ([Télécharger](https://dotnet.microsoft.com/download/dotnet/8.0))
+- **.NET 8 SDK** ([TÃ©lÃ©charger](https://dotnet.microsoft.com/download/dotnet/8.0))
 - **Visual Studio 2022** (ou Visual Studio Code avec C# Dev Kit)
 - **Git** (optionnel)
 
@@ -61,15 +61,15 @@ Ce projet suit l'architecture **Clean Architecture** avec une séparation claire 
 2. **Ouvrir la solution** :
    - Double-cliquez sur `IMS.sln`
 
-3. **Restaurer les dépendances** (automatique) :
+3. **Restaurer les dÃ©pendances** (automatique) :
    - Visual Studio restaure les packages NuGet automatiquement
 
-4. **Définir le projet de démarrage** :
-   - Clic droit sur `IMS.WebApp` ? Définir comme projet de démarrage
+4. **DÃ©finir le projet de dÃ©marrage** :
+   - Clic droit sur `IMS.WebApp` ? DÃ©finir comme projet de dÃ©marrage
 
 5. **Lancer l'application** :
    - Appuyez sur `F5` ou cliquez sur le bouton de lecture (??)
-   - L'application s'ouvrira par défaut à : `https://localhost:7216`
+   - L'application s'ouvrira par dÃ©faut Ã  : `https://localhost:7216`
 
 #### Option 2 : Avec la Ligne de Commande
 
@@ -79,7 +79,7 @@ Ce projet suit l'architecture **Clean Architecture** avec une séparation claire 
    cd IMS
    ```
 
-2. **Restaurer les dépendances** :
+2. **Restaurer les dÃ©pendances** :
    ```bash
    dotnet restore
    ```
@@ -95,8 +95,8 @@ Ce projet suit l'architecture **Clean Architecture** avec une séparation claire 
    dotnet run
    ```
 
-5. **Accéder à l'application** :
-   - Ouvrez votre navigateur et allez à : `https://localhost:7216`
+5. **AccÃ©der Ã  l'application** :
+   - Ouvrez votre navigateur et allez Ã  : `https://localhost:7216`
 
 #### Option 3 : Avec Visual Studio Code
 
@@ -105,33 +105,33 @@ Ce projet suit l'architecture **Clean Architecture** avec une séparation claire 
    code .
    ```
 
-2. **Ouvrir le terminal intégré** (`Ctrl + `)
+2. **Ouvrir le terminal intÃ©grÃ©** (`Ctrl + `)
 
 3. **Lancer le projet** :
    ```bash
    dotnet run --project IMS.WebApp
    ```
 
-## ?? Fonctionnalités
+## ?? FonctionnalitÃ©s
 
 ### ?? Gestion des Produits
-- **Créer** : Ajouter un nouveau produit avec nom, quantité et prix
-- **Éditer** : Modifier les informations d'un produit existant
-- **Supprimer** : Retirer un produit du système
-- **Consulter** : Voir les détails et l'historique d'un produit
-- **Associer des inventaires** : Lier des inventaires à un produit
+- **CrÃ©er** : Ajouter un nouveau produit avec nom, quantitÃ© et prix
+- **Ã‰diter** : Modifier les informations d'un produit existant
+- **Supprimer** : Retirer un produit du systÃ¨me
+- **Consulter** : Voir les dÃ©tails et l'historique d'un produit
+- **Associer des inventaires** : Lier des inventaires Ã  un produit
 
 ### ?? Gestion des Inventaires
-- **Créer** : Ajouter un nouvel inventaire (stock)
-- **Éditer** : Modifier les informations d'un inventaire
+- **CrÃ©er** : Ajouter un nouvel inventaire (stock)
+- **Ã‰diter** : Modifier les informations d'un inventaire
 - **Supprimer** : Retirer un inventaire
-- **Consulter** : Voir les détails d'un inventaire
+- **Consulter** : Voir les dÃ©tails d'un inventaire
 - **Transactionnel** : Enregistrer les mouvements d'inventaire
 
-### ? Validations Métier
-- **Prix du Produit** : Doit être ? au coût total des inventaires associés
-- **Quantités** : Doivent être positives
-- **Longueur des noms** : Limités à 100 caractères
+### ? Validations MÃ©tier
+- **Prix du Produit** : Doit Ãªtre ? au coÃ»t total des inventaires associÃ©s
+- **QuantitÃ©s** : Doivent Ãªtre positives
+- **Longueur des noms** : LimitÃ©s Ã  100 caractÃ¨res
 
 ## ??? Technologies
 
@@ -146,7 +146,7 @@ Ce projet suit l'architecture **Clean Architecture** avec une séparation claire 
 
 ```
 IMS/
-??? IMS.CoreBusiness/          # Entités et validations
+??? IMS.CoreBusiness/          # EntitÃ©s et validations
 ?   ??? Product.cs
 ?   ??? Inventory.cs
 ?   ??? ProductInventory.cs
@@ -168,7 +168,7 @@ IMS/
 ?   ?   ??? ViewInventoriesByNameUseCase.cs
 ?   ??? Activities/
 ?
-??? IMS.Plugins.InMemory/      # Persistance en mémoire
+??? IMS.Plugins.InMemory/      # Persistance en mÃ©moire
 ?   ??? ProductRepository.cs
 ?   ??? InventoryRepository.cs
 ?   ??? InventoryTransactionRepository.cs
@@ -185,8 +185,8 @@ IMS/
 ?   ?   ?       ??? EditInventory.razor
 ?   ?   ?       ??? ...
 ?   ?   ??? ...
-?   ??? Program.cs             # Configuration et injection de dépendances
-?   ??? App.razor              # Point d'entrée
+?   ??? Program.cs             # Configuration et injection de dÃ©pendances
+?   ??? App.razor              # Point d'entrÃ©e
 ?   ??? appsettings.json       # Configuration
 ?
 ??? README.md                  # Ce fichier
@@ -207,35 +207,35 @@ La configuration de l'application se trouve dans `IMS.WebApp/appsettings.json` :
 }
 ```
 
-## ?? Stockage des Données
+## ?? Stockage des DonnÃ©es
 
-Actuellement, l'application utilise un **stockage en mémoire** (`IMS.Plugins.InMemory`).
+Actuellement, l'application utilise un **stockage en mÃ©moire** (`IMS.Plugins.InMemory`).
 
-**?? Attention** : Les données sont **perdues lors du redémarrage** de l'application.
+**?? Attention** : Les donnÃ©es sont **perdues lors du redÃ©marrage** de l'application.
 
-Pour **persister les données**, vous pouvez :
-1. Implémenter un repository avec **Entity Framework Core** et une base de données (SQL Server, PostgreSQL, etc.)
-2. Implémenter un repository avec **fichiers JSON** (sérialisation)
-3. Ajouter une vraie base de données (recommandé pour la production)
+Pour **persister les donnÃ©es**, vous pouvez :
+1. ImplÃ©menter un repository avec **Entity Framework Core** et une base de donnÃ©es (SQL Server, PostgreSQL, etc.)
+2. ImplÃ©menter un repository avec **fichiers JSON** (sÃ©rialisation)
+3. Ajouter une vraie base de donnÃ©es (recommandÃ© pour la production)
 
-## ?? Injection de Dépendances
+## ?? Injection de DÃ©pendances
 
-L'injection de dépendances est configurée dans `IMS.WebApp/Program.cs` :
+L'injection de dÃ©pendances est configurÃ©e dans `IMS.WebApp/Program.cs` :
 
 ```csharp
 // Repositories (Persistance)
 builder.Services.AddSingleton<IInventoryRepository, InventoryRepository>();
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 
-// Use Cases (Logique métier)
+// Use Cases (Logique mÃ©tier)
 builder.Services.AddTransient<IAddProductUseCase, AddProductUseCase>();
 builder.Services.AddTransient<IEditProductUseCase, EditProductUseCase>();
 // ... etc
 ```
 
-## ?? Dépannage
+## ?? DÃ©pannage
 
-### Application ne démarre pas
+### Application ne dÃ©marre pas
 ```bash
 # Nettoyez et reconstruisez
 dotnet clean
@@ -245,12 +245,12 @@ dotnet run --project IMS.WebApp
 
 ### Erreur de certificat HTTPS
 ```bash
-# Approuver le certificat de développement .NET
+# Approuver le certificat de dÃ©veloppement .NET
 dotnet dev-certs https --trust
 ```
 
-### Ports déjà utilisés
-L'application écoute par défaut sur `https://localhost:7216`. Si le port est occupé, modifiez-le dans `launchSettings.json`.
+### Ports dÃ©jÃ  utilisÃ©s
+L'application Ã©coute par dÃ©faut sur `https://localhost:7216`. Si le port est occupÃ©, modifiez-le dans `launchSettings.json`.
 
 ## ?? Ressources Utiles
 
@@ -258,23 +258,3 @@ L'application écoute par défaut sur `https://localhost:7216`. Si le port est occ
 - [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - [.NET 8 Documentation](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-8)
 
-## ?? Contribution
-
-Les contributions sont bienvenues ! N'hésitez pas à :
-1. Fork le repository
-2. Créer une branche (`git checkout -b feature/amazing-feature`)
-3. Commiter vos changements (`git commit -m 'Add amazing feature'`)
-4. Pousser vers la branche (`git push origin feature/amazing-feature`)
-5. Ouvrir une Pull Request
-
-## ?? Licence
-
-Ce projet est sous licence [MIT](LICENSE) (si applicable).
-
-## ????? Auteur
-
-- **JelooIs** - [GitHub](https://github.com/JelooIs)
-
----
-
-**Besoin d'aide ?** Consultez les [issues](https://github.com/JelooIs/IMS/issues) ou créez une nouvelle question.

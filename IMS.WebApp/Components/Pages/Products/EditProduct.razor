@@ -1,4 +1,4 @@
-﻿@page "/editproduct/{id:int}"
+﻿@page "/editproduct/{Id:int}"
 
 @inject NavigationManager NavigationManager
 @inject IViewProductByIdUseCase ViewProductByIdUseCase
@@ -8,11 +8,13 @@
 
 <h3>EditProduct</h3>
 <br />
-@if (this.product != null)
+@if (this.product is not null)
 {
 	<EditForm Model="product" OnValidSubmit="Update">
 	<DataAnnotationsValidator></DataAnnotationsValidator>
 	<ValidationSummary></ValidationSummary>
+
+		<InputNumber @bind-Value="product.ProductId" hidden></InputNumber>
 
 	<div class="form-group">
 		<label for="name">Product Name</label>
@@ -57,6 +59,7 @@
 
 
 @code {
+
 	private Product? product;
 
 	[Parameter]
@@ -64,14 +67,19 @@
 
 	protected override async Task OnParametersSetAsync()
 	{
-		this.product = await ViewProductByIdUseCase.ExecuteAsync(this.Id);
+		this.product ??= await ViewProductByIdUseCase.ExecuteAsync(this.Id);
+
+		if (this.product is null)
+		{
+			NavigationManager.NavigateTo("/404");
+		}
 	}
 
 	private async Task Update()
 	{
 		if (product is not null)
 		{
-			await EditProductUseCase.ExecuteAsync(product);
+			await EditProductUseCase.ExecuteAsync(this.product);
 			NavigationManager.NavigateTo("/products");
 		}
 	}

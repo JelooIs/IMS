@@ -61,9 +61,12 @@ namespace IMS.Plugins.InMemory
         public async Task<Product?> GetProductByIdAsync(int productId)
         {
             var prod = _products.FirstOrDefault(x => x.ProductId == productId);
-            var newPROD = new Product();
+            Product? newPROD = null;
             if (prod != null)
             {
+
+                newPROD = new Product();
+
                 newPROD.ProductId = prod.ProductId;
                 newPROD.ProductName = prod.ProductName;
                 newPROD.Quantity = prod.Quantity;

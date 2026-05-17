@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IMS.CoreBusiness
 {
-    internal class InventoryTransaction
+    public class InventoryTransaction
     {
         [Required]
         public int InventoryTransactionId { get; set; }
